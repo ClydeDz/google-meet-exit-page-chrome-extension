@@ -1,0 +1,110 @@
+@import "./variables";
+
+h1, h3 {
+    color: $dark-gray;
+    font-weight: initial;
+    margin: 0;
+}
+
+h1 {
+    font-size: 3.8em;    
+    margin: 0 0 9px 0;
+}
+
+input[type=color], 
+input[type=text] {
+    margin: 2px;
+    border-radius: 3px;
+    background-color: $light-gray;
+}
+
+input[type=color] {
+    border: none;
+    width: 100%;
+
+    &:focus, &:hover {
+        background-color: darken($light-gray, 5%);
+        cursor: pointer;
+    }
+}
+
+input[type=text] {
+    outline: none;
+    border: 1px solid $light-gray;
+    padding: 5px 10px;
+    color: $dark-gray;
+
+    &:focus {
+        background-color: white;
+        border-color: $blue;        
+    }
+}
+
+button {
+    border: none;
+    outline: 0;
+    border-radius: 3px;
+    padding: 8px 10px;
+    min-width: 60px;
+
+    &:hover {
+        cursor: pointer;
+    }
+    
+    &.btn-secondary {
+        color: $dark-gray;
+        background: $light-gray;        
+        
+        &:hover {
+            background: darken($light-gray, 5%);
+        }
+    }
+    
+    &.btn-primary {
+        color: white;
+        background: $blue;
+
+        &:hover {
+            background: darken($blue, 5%);
+        }
+    }
+}
+
+
+
+.icon-btn-secondary {
+    color: $dark-gray;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.icon-delete {
+    &::after {
+        display: inline-block;
+        content: "\00d7";
+        font-size: x-large;
+    }
+
+    &:hover {
+        color: $red;
+    }
+}
+
+.link-separator::after {
+    content: "/";
+    margin: 0 3px 0 6px;
+    opacity: 0.5;
+    color: $dark-gray;
+}
+
+a {
+ color: $dark-gray;
+ text-decoration: none;
+
+ &:hover, &:focus {
+    color: $blue;
+    text-decoration: underline;
+ }   
+}

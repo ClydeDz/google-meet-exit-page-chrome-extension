@@ -1,0 +1,68 @@
+@import "./variables";
+
+body {
+    margin: 0;
+    color: $dark-gray;
+    font-family: $font-family;
+    font-size: 12px;
+}
+
+main {
+    margin: 0 8px;
+    padding: 9px 9px 60px 9px;
+}
+
+.product-banner {
+    display: inline-block;
+    width: 100%;
+    margin: 27px 17px 27px 0px;
+
+    img {
+        float: left;
+        margin-right: 18px;
+    }
+
+    & > div {
+        float: left;
+    }
+}
+
+#Configuration {
+    display: block;
+
+    td, th {
+        padding: 2px 4px 2px 0;
+    }
+
+    th {
+        font-weight: normal;
+        color: $dark-gray;
+        text-align: left;
+        font-size: small;
+    }
+
+    th:nth-child(3), th:nth-child(4) {
+        width: 100px;
+    }
+
+    & + div {
+        margin-top: 18px;
+
+        & > button {
+            margin-right: 9px;
+        }        
+    }
+}
+
+.preview-label {
+    padding: 2px 4px;
+    border-radius: 3px;
+    border: 1px solid $dark-gray;
+    margin: 0 4px;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+    line-height: 10px;
+    font-family: $font-family;
+    font-size: small;
+}

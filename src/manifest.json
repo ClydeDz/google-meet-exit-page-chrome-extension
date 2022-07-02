@@ -13,9 +13,12 @@
     "permissions": [
       "storage"
     ],
+    "background": {
+      "service_worker": "background.js"
+    },
     "content_scripts": [{
       "matches": ["*://meet.google.com/*"],
-      "js": ["background.js"]
+      "js": ["content_scripts.js"]
     }]    
   }
   

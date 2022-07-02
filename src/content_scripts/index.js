@@ -6,14 +6,19 @@ import { PRESET_CONFIGURATION } from "../common/settings";
 function applyStyle(result) {
     const savedConfiguration = result || PRESET_CONFIGURATION;
     const redirectUrl = savedConfiguration["redirectUrl"];
+    const redirectOpenInNewTab = savedConfiguration["redirectOpenInNewTab"];
     console.info("Extension will redirect you to", redirectUrl);
     
     const clickHandler = () => {
         console.log("Clicked");
         setTimeout(function() {
-            // window.open('https://support.wwf.org.uk', "_blank") 
-            // || window.location.replace('https://support.wwf.org.uk');
-            location.replace(redirectUrl);
+            if (redirectOpenInNewTab) {
+                window.open(redirectUrl, "_blank")
+                    || window.location.replace(redirectUrl);
+            }
+            else {
+                location.replace(redirectUrl);
+            }
         }, 1000);        
     };
 

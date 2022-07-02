@@ -14,7 +14,7 @@
       "storage"
     ],
     "content_scripts": [{
-      "matches": ["*://*.twitter.com/*"],
+      "matches": ["*://meet.google.com/*"],
       "js": ["background.js"]
     }]    
   }

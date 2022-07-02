@@ -17,13 +17,16 @@ function applyStyle(result) {
         }, 1000);        
     };
 
-    setTimeout(myGreeting, 1000);
+    var myInterval = setInterval(myGreeting, 2000);   
 
     function myGreeting() {
         console.info("Hello again");
-        const tweetBtn = document.querySelectorAll("[data-testid='SideNav_NewTweet_Button']")[0];
-        tweetBtn && tweetBtn.addEventListener('click', clickHandler);
-        console.info(tweetBtn);   
+        const tweetBtn = document.querySelectorAll("[aria-label='Leave call']")[0];
+        if(tweetBtn) {
+            tweetBtn.addEventListener('click', clickHandler);
+            clearInterval(myInterval);
+            console.info(tweetBtn);   
+        }
     }
 }
 

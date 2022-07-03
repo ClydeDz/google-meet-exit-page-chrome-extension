@@ -1,5 +1,5 @@
 import { getStorage } from "../common/storage";
-import { CHROME_SYNC_STORAGE_KEY, CONTENT_SCRIPT_INTERVAL } from "../common/settings";
+import { CHROME_SYNC_STORAGE_KEY, CONTENT_SCRIPT_INTERVAL, REDIRECT_INTERVAL } from "../common/settings";
 import { initializeDocument } from "../common/document";
 import { PRESET_CONFIGURATION } from "../common/settings";
 

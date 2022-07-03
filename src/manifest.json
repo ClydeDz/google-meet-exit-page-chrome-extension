@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
     "name": "Google Meet Exit Page",
-    "description": "Configure the exit page after ending a Google Meet call",
-    "version": "0.0.1",
+    "description": "Configure the exit page after ending a Google Meet call.",
+    "version": "0.0.2",
     "author": "Clyde D'Souza",
     "icons": {
       "16": "icons/icon16.png",

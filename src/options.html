@@ -2,34 +2,41 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Google Meet Exit Page</title>
+        <title>Google Meet Exit Page — Configure the Exit Page After Ending a Google Meet Call</title>
         <meta name="viewport" content="initial-scale=1, maximum-scale=1" />
-        <meta name="description" content="Google Meet Exit Page - Configure the exit page after ending a Google Meet call" />
+        <meta name="description" content="Google Meet Exit Page — Configure the Exit Page After Ending a Google Meet Call" />
         <script src="options.js" type="text/javascript"></script>
+        <link href="options.css" rel="stylesheet" />
     </head>
     <body>
-        <header>&nbsp;</header>
         <main>
             <div class="product-banner">
                 <img src="icons/icon128.png" alt="logo" width="90" />
                 <div>
                     <h1>Google Meet Exit Page</h1>
-                    <h3>Configure the exit page after ending a Google Meet call</h3>
+                    <p>Configure the exit page after ending a Google Meet call. Once you hit the end call button on Google Meet, you'll be redirected to the URL configured below.</p>
                 </div>
             </div>
-            <div id="Configuration">
-                <input type="text" id="GoogleMeetRedirectWebpage" />
-            </table>
-            <div>
+            <form>
+                <label>
+                    Redirect URL
+                    <input type="text" id="GoogleMeetRedirectWebpage" aria-label="Redirect URL" />
+                </label>
+                <br/>
+                <label>
+                    Open URL in new tab
+                    <input type="checkbox" id="GoogleMeetOpenInNewTab" aria-label="Open URL in new tab" />
+                </label>
+                <br/>
                 <button id="SaveConfiguration" type="button" class="btn-primary">Save</button>
-            </div>            
+            </form>
         </main>
         <footer>
-            <a href="https://github.com/ClydeDz/jira-status-colours-chrome-extension/blob/main/docs/README.md" target="_blank" rel="noreferrer">
+            <a href="https://github.com/ClydeDz/google-meet-exit-page-chrome-extension/blob/main/docs/README.md" target="_blank" rel="noreferrer">
                 About</a><span class="link-separator"></span>
-            <a href="https://github.com/ClydeDz/jira-status-colours-chrome-extension/issues/new/choose" target="_blank" rel="noreferrer">
+            <a href="https://github.com/ClydeDz/google-meet-exit-page-chrome-extension/issues/new/choose" target="_blank" rel="noreferrer">
                 Have an idea?</a><span class="link-separator"></span>
-            <a href="https://github.com/ClydeDz/jira-status-colours-chrome-extension/issues/new/choose" target="_blank" rel="noreferrer">
+            <a href="https://github.com/ClydeDz/google-meet-exit-page-chrome-extension/issues/new/choose" target="_blank" rel="noreferrer">
                 Report an issue</a><span class="link-separator"></span>
             <a href="https://sponsor.clydedsouza.net/" target="_blank" rel="noreferrer">
                 Buy me a coffee</a><span class="link-separator"></span>

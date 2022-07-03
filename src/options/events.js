@@ -6,17 +6,18 @@ import * as self from "./events";
 export function saveConfiguration() {
     const updatedConfiguration = {
       redirectUrl: getElementById("GoogleMeetRedirectWebpage").value,
-      redirectOpenInNewTab: false, // getElementById("GoogleMeetRedirectWebpage").value,
+      redirectOpenInNewTab: getElementById("GoogleMeetOpenInNewTab").checked,
     };
     setStorage(CHROME_SYNC_STORAGE_KEY, updatedConfiguration);
 }
 
 export function startup(result) {
-    const savedConfiguration = result || PRESET_CONFIGURATION;        
+    const savedConfiguration = result || PRESET_CONFIGURATION;  
     const redirectUrl = savedConfiguration["redirectUrl"];
-    // const redirectOpenInNewTab = savedConfiguration["redirectOpenInNewTab"];
+    const redirectOpenInNewTab = savedConfiguration["redirectOpenInNewTab"];
+
     getElementById("GoogleMeetRedirectWebpage").value = redirectUrl;
-    // getElementById("GoogleMeetRedirectWebpage").value = redirectOpenInNewTab;
+    getElementById("GoogleMeetOpenInNewTab").checked = redirectOpenInNewTab;
 }
 
 export function initializeEventListenersForOptions() {

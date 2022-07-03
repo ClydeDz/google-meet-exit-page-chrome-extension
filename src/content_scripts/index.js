@@ -1,5 +1,5 @@
 import { getStorage } from "../common/storage";
-import { CHROME_SYNC_STORAGE_KEY, BACKGROUND_SCRIPT_INTERVAL } from "../common/settings";
+import { CHROME_SYNC_STORAGE_KEY, CONTENT_SCRIPT_INTERVAL } from "../common/settings";
 import { initializeDocument } from "../common/document";
 import { PRESET_CONFIGURATION } from "../common/settings";
 
@@ -13,16 +13,16 @@ function applyStyle(result) {
         console.log("Clicked");
         setTimeout(function() {
             if (redirectOpenInNewTab) {
-                window.open(redirectUrl, "_blank")
-                    || window.location.replace(redirectUrl);
+                redirectUrl && (window.open(redirectUrl, "_blank")
+                    || window.location.replace(redirectUrl));
             }
             else {
-                location.replace(redirectUrl);
+                redirectUrl && location.replace(redirectUrl);
             }
-        }, 1000);        
+        }, REDIRECT_INTERVAL);        
     };
 
-    var myInterval = setInterval(myGreeting, 2000);   
+    var myInterval = setInterval(myGreeting, CONTENT_SCRIPT_INTERVAL);   
 
     function myGreeting() {
         console.info("Hello again");
@@ -39,5 +39,5 @@ window.onload = function() {
     initializeDocument(document);
     setTimeout(function() {
         getStorage(CHROME_SYNC_STORAGE_KEY, applyStyle);
-    }, BACKGROUND_SCRIPT_INTERVAL);    
+    }, CONTENT_SCRIPT_INTERVAL);    
 }

@@ -18,8 +18,9 @@ input[type=text] {
     background-color: $light-gray;
     outline: none;
     border: 1px solid $light-gray;
-    padding: 5px 10px;
+    padding: 10px;
     color: $dark-gray;
+    min-width: 250px;
 
     &:focus {
         background-color: white;
@@ -69,11 +70,4 @@ a {
         color: $meet-green;
         text-decoration: underline;
     }   
-}
-
-form {
-    label {
-        display: inline-block;
-        margin-bottom: 16px;
-    }
 }

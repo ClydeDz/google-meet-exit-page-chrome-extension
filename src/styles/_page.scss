@@ -3,12 +3,18 @@
 body {
     margin: 0;
     color: $dark-gray;
-    font-family: $font-family;
-    font-size: 16px;
-    border-top: 20px solid $meet-orange;
-    border-bottom: 20px solid $meet-green;
-    border-right: 20px solid $meet-red;
-    border-left: 20px solid $meet-blue;
+    font: {
+        family: $font-family;
+        size: 16px;
+    }
+    border: {
+        top: $meet-orange;
+        bottom: $meet-green;
+        right: $meet-red;
+        left: $meet-blue;
+    }
+    border-style: solid;
+    border-width: 20px;
     padding: 0 10px;
 }
 
@@ -34,5 +40,13 @@ main {
     & > div {
         float: left;
         width: 90%;
+    }
+}
+
+
+form {
+    label {
+        display: inline-block;
+        margin-bottom: 16px;
     }
 }

@@ -1,5 +1,5 @@
-import { redirect } from './redirect';
+import { redirectToOptionsPage } from './redirect';
 
 chrome.runtime.onInstalled.addListener(function (object) {
-    redirect(object, chrome);
+    redirectToOptionsPage(object, chrome);
 });

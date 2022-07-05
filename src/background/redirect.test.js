@@ -1,51 +1,83 @@
 import * as redirectModule from "./redirect";
     
-describe("redirect → redirect", () => {
+describe("redirect → redirectToOptionsPage", () => {
     beforeEach(() => {
         jest.resetAllMocks();
     });
 
-    it("should not apply style if no jira status labels found", () => {
-        const mockOpenOptionsPage = jest.fn();
-        const mockObject = {
-            reason: 'chrome.runtime.OnInstalledReason.INSTALL',
-        };
-        const mockChrome = {
-            runtime: {
-                OnInstalledReason: {
-                    INSTALL: 'chrome.runtime.OnInstalledReason.INSTALL',
+    describe("when chrome extension install event is triggered", () => {
+        it("chrome runtime openOptionsPage() is called", () => {
+            const mockOpenOptionsPage = jest.fn();
+            const mockObject = {
+                reason: 'chrome.runtime.OnInstalledReason.INSTALL',
+            };
+            const mockChrome = {
+                runtime: {
+                    OnInstalledReason: {
+                        INSTALL: 'chrome.runtime.OnInstalledReason.INSTALL',
+                    },
+                    openOptionsPage: mockOpenOptionsPage
+                }
+            };
+    
+            redirectModule.redirectToOptionsPage(mockObject, mockChrome);
+    
+            expect(mockOpenOptionsPage).toHaveBeenCalled();
+        });
+    
+        it("chrome tabs create() is called", () => {
+            const mockTabsCreate = jest.fn();
+            const mockGetURL = jest.fn();
+            mockGetURL.mockReturnValue("test.com");
+            const mockObject = {
+                reason: 'chrome.runtime.OnInstalledReason.INSTALL',
+            };
+            const mockChrome = {
+                runtime: {
+                    OnInstalledReason: {
+                        INSTALL: 'chrome.runtime.OnInstalledReason.INSTALL',
+                    },
+                    getURL: mockGetURL
                 },
-                openOptionsPage: mockOpenOptionsPage
-            }
-        };
-
-        redirectModule.redirect(mockObject, mockChrome);
-
-        expect(mockOpenOptionsPage).toHaveBeenCalled();
+                tabs: {
+                    create: mockTabsCreate
+                }
+            };
+    
+            redirectModule.redirectToOptionsPage(mockObject, mockChrome);
+    
+            expect(mockTabsCreate).toHaveBeenCalledWith({ url: "test.com"});
+            expect(mockGetURL).toHaveBeenCalledWith("options.html");
+        });
     });
 
-    it("shoffefwefuld not apply style if no jira status labels found", () => {
-        const mockTabsCreate = jest.fn();
-        const mockGetURL = jest.fn();
-        mockGetURL.mockReturnValue("test.com");
-        const mockObject = {
-            reason: 'chrome.runtime.OnInstalledReason.INSTALL',
-        };
-        const mockChrome = {
-            runtime: {
-                OnInstalledReason: {
-                    INSTALL: 'chrome.runtime.OnInstalledReason.INSTALL',
+    describe("when chrome extension install event is not triggered", () => {
+        it("neither chrome runtime openOptionsPage() nor chrome tabs create() is called", () => {
+            const mockOpenOptionsPage = jest.fn();
+            const mockTabsCreate = jest.fn();
+            const mockGetURL = jest.fn();
+            mockGetURL.mockReturnValue("test.com");
+            const mockObject = {
+                reason: 'chrome.runtime.randomReason',
+            };
+            const mockChrome = {
+                runtime: {
+                    OnInstalledReason: {
+                        INSTALL: 'chrome.runtime.OnInstalledReason.INSTALL',
+                    },
+                    getURL: mockGetURL,
+                    openOptionsPage: mockOpenOptionsPage
                 },
-                getURL: mockGetURL
-            },
-            tabs: {
-                create: mockTabsCreate
-            }
-        };
-
-        redirectModule.redirect(mockObject, mockChrome);
-
-        expect(mockTabsCreate).toHaveBeenCalledWith({ url: "test.com"});
-        expect(mockGetURL).toHaveBeenCalledWith("options.html");
+                tabs: {
+                    create: mockTabsCreate
+                }
+            };
+    
+            redirectModule.redirectToOptionsPage(mockObject, mockChrome);
+    
+            expect(mockOpenOptionsPage).not.toHaveBeenCalled();
+            expect(mockTabsCreate).not.toHaveBeenCalled();
+            expect(mockGetURL).not.toHaveBeenCalledWith("options.html");
+        });
     });
 });

@@ -9,21 +9,28 @@ const getElementByIdSpy = jest.spyOn(documentModule, "getElementById")
 const setStorageSpy = jest.spyOn(storageModule, "setStorage")
     .mockImplementation(jest.fn());
 
-describe("events → startup", () => {
+describe("events → loadConfiguration", () => {
     const mockConfiguration = { ...settingsModule.PRESET_CONFIGURATION };
     beforeEach(() => {
-        settingsModule.ROW_COUNT = 0;
         jest.resetAllMocks();
     });
 
-    it("should execute loop when relevant configuration found", () => {
-        getElementByIdSpy.mockImplementation(() => {
-            return {
-                value: "https://www.google.com",
-                checked: true
-            };
-        })
-        eventsModule.startup(mockConfiguration);
+    it.each([
+        mockConfiguration, undefined
+    ])("both elements are assigned with configuration values", (suppliedConfiguration) => {
+        getElementByIdSpy
+            .mockImplementationOnce(() => {
+                return {
+                    value: "https://www.google.com"
+                };
+            })
+            .mockImplementationOnce(() => {
+                return {
+                    checked: true
+                };
+            });
+
+        eventsModule.loadConfiguration(suppliedConfiguration);
         
         expect(getElementByIdSpy).toHaveBeenCalledWith("GoogleMeetRedirectWebpage");
         expect(getElementByIdSpy).toHaveBeenCalledWith("GoogleMeetOpenInNewTab");
@@ -32,11 +39,10 @@ describe("events → startup", () => {
 
 describe("events → initializeEventListenersForOptions", () => {
     beforeEach(() => {
-        settingsModule.ROW_COUNT = 0;
         jest.resetAllMocks();
     });
 
-    it("initializes the correct listeners with the correct methods", () => {
+    it("initializes the correct listener with the correct method", () => {
         const mockEventListener = jest.fn();
         const mockParentDiv = { addEventListener: mockEventListener};
         getElementByIdSpy.mockReturnValue(mockParentDiv);
@@ -53,7 +59,7 @@ describe("events → saveConfiguration", () => {
         jest.resetAllMocks();
     });
 
-    it("saves empty configuration when no rows found", () => {
+    it("saves updated configuration", () => {
         getElementByIdSpy.mockReturnValueOnce({ value: "test"});
         getElementByIdSpy.mockReturnValueOnce({ checked: false});
 

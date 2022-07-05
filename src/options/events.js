@@ -11,15 +11,15 @@ export function saveConfiguration() {
     setStorage(CHROME_SYNC_STORAGE_KEY, updatedConfiguration);
 }
 
-export function startup(result) {
+export function initializeEventListenersForOptions() {
+    getElementById("SaveConfiguration").addEventListener("click", self.saveConfiguration);
+}
+
+export function loadConfiguration(result) {
     const savedConfiguration = result || PRESET_CONFIGURATION;  
     const redirectUrl = savedConfiguration["redirectUrl"];
     const redirectOpenInNewTab = savedConfiguration["redirectOpenInNewTab"];
 
     getElementById("GoogleMeetRedirectWebpage").value = redirectUrl;
     getElementById("GoogleMeetOpenInNewTab").checked = redirectOpenInNewTab;
-}
-
-export function initializeEventListenersForOptions() {
-    getElementById("SaveConfiguration").addEventListener("click", self.saveConfiguration);
 }

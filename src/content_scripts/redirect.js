@@ -1,6 +1,6 @@
 import { CONTENT_SCRIPT_INTERVAL, REDIRECT_INTERVAL } from "../common/settings";
 import { PRESET_CONFIGURATION } from "../common/settings";
-import { querySelectorAll} from "../common/document";
+import { querySelectorAll } from "../common/document";
 
 export function applyRedirect(result) {
     const savedConfiguration = result || PRESET_CONFIGURATION;
@@ -26,7 +26,7 @@ export function applyRedirect(result) {
             leaveCallBtn.addEventListener('click', onLeaveCallBtnClick);
             clearInterval(myInterval);
         }
-    }
+    };
 
     var myInterval = setInterval(searchAndBindLeaveCallBtn, CONTENT_SCRIPT_INTERVAL);
 }

@@ -19,7 +19,7 @@ describe("document → querySelectorAll", () => {
         jest.resetAllMocks();
     }); 
 
-    test("calls getElementById method called with supplied element selector", () => {
+    test("calls querySelectorAll method called with supplied element selector", () => {
         documentModule.querySelectorAll("#test");
         expect(documentMockModule.querySelectorAll).toHaveBeenCalledWith("#test");
     });

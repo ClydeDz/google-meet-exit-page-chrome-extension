@@ -32,6 +32,6 @@ body:
     id: extension
     attributes:
       label: Extension version
-      placeholder: ex. Jira Status Colours 1.0.0
+      placeholder: ex. Google Meet Exit Page 1.0.0
     validations:
       required: true  

@@ -8,8 +8,8 @@ Please open an issue to discuss new ideas or features before going away and deve
 - Clone this repo and install the required node modules.
 - Run `npm run build:prod` to build this project. 
 - Follow [these instructions](https://superuser.com/a/247654) to install this extension locally. Use the generated `dist` folder as the folder containing the extensions code to load.
-- Once installed, head over to the Options page to configure custom colours for Jira statuses.
-- Then, head over to your Jira board and you should see the colours applied.
+- Once installed, head over to the Options page to configure the values for this extension.
+- Then, after joining a Google Meet call, click the 'Leave Call' button and you should be redirected to the URL you configured earlier. 
 
 ## Merging your changes in
 In other words, the pull request process. When you're ready with your changes, open up a pull request to get your changes merged in. Follow the checklist below to ensure you've covered the requirements. 
@@ -17,7 +17,7 @@ In other words, the pull request process. When you're ready with your changes, o
 ### Checklist
 - Think of how you can tackle a piece of work in the smallest unit possible. A small unit, in this case, would be something that adds value even though the changes are small. Small changes are easier to review, hence the request to think small where possible.
 - Ensure you've added or updated unit tests. Would your unit test fail if someone was to accidentally modify your code?
-- Update the version number in the [manifest.json file](https://github.com/ClydeDz/jira-status-colours-chrome-extension/blob/main/src/manifest.json#L5) and [package.json file](https://github.com/ClydeDz/jira-status-colours-chrome-extension/blob/main/package.json#L3). We're following the [Semver guide](https://semver.org/), so please check the website to see which number you'd need to increment. 
+- Update the version number in the [manifest.json file](https://github.com/ClydeDz/google-meet-exit-page-chrome-extension/blob/main/src/manifest.json#L5) and [package.json file](https://github.com/ClydeDz/google-meet-exit-page-chrome-extension/blob/main/package.json#L3). We're following the [Semver guide](https://semver.org/), so please check the website to see which number you'd need to increment. 
 - As a result of your changes, if you need to make changes to screenshots or description of the extension, please let me know in the description of your pull request and we can review your updated copy together. Updating this in the Chrome web store is currently a manual process.
 
 **Note:** Even after a successful build and deployment, the extension still remains in draft/unpublished state in the Chrome developer site. I need to manually submit a version for review which then eventually published the extension.

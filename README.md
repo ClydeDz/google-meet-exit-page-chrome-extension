@@ -1,5 +1,4 @@
-# google-meet-exit-page-chrome-extension
-TODO
+# Google Meet Exit Page Chrome Extension
 Configure the exit page after ending a Google Meet call
 
 ## Why?

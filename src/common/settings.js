@@ -1,4 +1,4 @@
-export const CHROME_SYNC_STORAGE_KEY = "meet-redirect-poc";
+export const CHROME_SYNC_STORAGE_KEY = "google-meet-exit-page";
 export const CONTENT_SCRIPT_INTERVAL = 2000;
 export const REDIRECT_INTERVAL = 1000;
 

@@ -6,7 +6,7 @@ describe("settings", () => {
   }); 
 
   test("chrome storage key is set to the right value", () => {      
-    expect(settingsModule.CHROME_SYNC_STORAGE_KEY).toBe("meet-redirect-poc");
+    expect(settingsModule.CHROME_SYNC_STORAGE_KEY).toBe("google-meet-exit-page");
   });
 
   test("content script interval is set to the right value", () => {      
